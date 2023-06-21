@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  web:
+    image: <poder_judicial>
+    ports:
+      - 3000:3000
+    depends_on:
+      - mysql
+      - mongodb
+
+  mysql:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=<root>
+      - MYSQL_DATABASE=<mi_sql>
+
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=<root>
+      - MONGO_INITDB_ROOT_PASSWORD=<root>
+      - MONGO_INITDB_DATABASE=<mi_mongo>
+
+volumes:
+  mysql_data:
+  mongodb_data:
